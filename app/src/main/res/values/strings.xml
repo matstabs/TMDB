@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">TMDB</string>
+
+    <!-- Navigation -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_discover">Discover</string>
+    <string name="navigation_favorite">Favorite</string>
+
+    <!-- Fragments titles -->
+    <string name="discover_movies_title">Movies</string>
+    <string name="discover_tv_shows_title">TV Shows</string>
+
+    <!-- Some default text -->
+    <string name="default_title">Some title</string>
+    <string name="default_year">2019</string>
+    <string name="default_score">8.9</string>
+    <string name="default_genres">Action, Drama</string>
+    <string name="random_big_text">asdhfhasdjfhj asdfhjkasdh asdfhjkhfasjdk asdfhjaskdhfkjw 13jkhe1j2k vsdjahfjsajkdsahfkj asdhfhasdjfhj asdfhjkasdh asdfhjkhfasjdk asdfhjaskdhfkjw 13jkhe1j2k vsdjahfjsajkdsahfkj asdhfhasdjfhj asdfhjkasdh asdfhjkhfasjdk asdfhjaskdhfkjw 13jkhe1j2k vsdjahfjsajkdsahfkj asdhfhasdjfhj asdfhjkasdh asdfhjkhfasjdk asdfhjaskdhfkjw 13jkhe1j2k vsdjahfjsajkdsahfkj.</string>
+
+    <!-- facts -->
+    <string name="original_title">Original title</string>
+    <string name="original_language">Original language</string>
+    <string name="director">Director</string>
+    <string name="budget">Budget</string>
+    <string name="box_office">Box office</string>
+    <string name="production_companies">Production companies</string>
+    <string name="show_type">Show type</string>
+    <string name="status">Status</string>
+    <string name="first_episode">First episode</string>
+    <string name="last_episode">Last episode</string>
+    <string name="networks">networks</string>
+    <string name="created_by">Created by</string>
+
+    <!-- Details Subtitles -->
+    <string name="facts">Facts</string>
+    <string name="trailers">Trailers</string>
+    <string name="overview">Overview</string>
+    <string name="cast">Cast</string>
+
+    <!-- Time -->
+    <string name="hrs">hrs</string>
+    <string name="min">min</string>
+
+
+    <string name="reload">Reload</string>
+
+</resources>

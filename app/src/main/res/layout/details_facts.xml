@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="25dp"
+    android:background="@color/grey_background_color"
+    tools:showIn="@layout/details_facts">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/facts"
+        android:textSize="@dimen/sub_title_details_text_size"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/facts_item_height"
+            android:text="@string/original_title"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/facts_item_text_size"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:gravity="start|center_vertical"
+            android:id="@+id/original_title_fact"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/facts_item_height"
+            android:textSize="@dimen/facts_item_text_size"
+            android:visibility="gone"
+            android:gravity="start|center_vertical"
+            android:id="@+id/original_title_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/original_language"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/original_language_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/original_language_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/show_type"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/show_type_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/show_type_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/status"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/status_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/status_fact_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/first_episode"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/first_episode_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/first_episode_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/last_episode"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/last_episode_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/last_episode_text"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/networks"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/networks_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/networks_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/created_by"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/created_by_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/created_by_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/director"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/director_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/director_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/budget"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/budget_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/budget_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:text="@string/box_office"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/box_office_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/box_office_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/production_companies"
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/facts_item_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/production_companies_fact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/facts_item_height"
+        android:textSize="@dimen/facts_item_text_size"
+        android:visibility="gone"
+        android:gravity="start|center_vertical"
+        android:id="@+id/production_companies_text"/>
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/list_item_padding"
+    android:layout_marginRight="@dimen/list_item_layout_margin"
+    android:layout_marginTop="@dimen/list_item_layout_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/list_item_padding">
+
+        <ImageView
+            android:layout_width="@dimen/list_poster_view_width"
+            android:layout_height="@dimen/list_poster_view_height"
+            android:id="@+id/list_item_poster_view"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/list_item_layout_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/list_item_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/default_title"
+                android:textColor="@color/black_text_color"
+                android:textSize="@dimen/title_text_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_item_genres_text"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="@dimen/genres_text_size"
+                android:text="@string/default_genres"/>
+
+            <TextView
+                android:id="@+id/tv_show_year_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/default_year"
+                android:textSize="@dimen/year_text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:layout_width="@dimen/score_logo_view_width"
+                    android:layout_height="@dimen/score_logo_view_height"
+                    android:id="@+id/list_item_score_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/score_text_height"
+                    android:layout_marginLeft="@dimen/score_text_margin"
+                    android:id="@+id/list_item_score_text"
+                    android:textSize="@dimen/score_text_size"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black_text_color"
+                    android:text="@string/default_score"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
