@@ -1,11 +1,11 @@
 package com.tmdb.ui.main
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.tmdb.TMDbApplication
 import com.tmdb.models.configuration.Configuration
 import com.tmdb.models.genres.GenresList
+import com.tmdb.network.ConnectionState
 import com.tmdb.network.NetworkModule
 import com.tmdb.network.TMDbAPI
 import io.reactivex.Observable
@@ -13,8 +13,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Function3
 import io.reactivex.schedulers.Schedulers
-import java.security.cert.Certificate
-import java.util.*
 import javax.inject.Inject
 
 
@@ -24,6 +22,9 @@ class MainPresenter : MvpPresenter<MainView>() {
 
     @Inject
     lateinit var service: TMDbAPI
+
+    @Inject
+    lateinit var connectionState: ConnectionState
 
     var disposalble: Disposable? = null
 
@@ -46,18 +47,21 @@ class MainPresenter : MvpPresenter<MainView>() {
 
         with(viewState) {
             //initNavigationDrawer()
+            if (connectionState.hasNetwork()) {
+                disposalble = getGenresAndConfig()
+                    .subscribe { list ->
+                        tvShowGenres = list[0] as GenresList
+                        movieGenres = list[1] as GenresList
+                        configuration = list[2] as Configuration
 
-            disposalble = loadGenresAndConfig()
-                .subscribe {list ->
-                    tvShowGenres = list[0] as GenresList
-                    movieGenres = list[1] as GenresList
-                    configuration = list[2] as Configuration
-
-                    initDiscoverViewPager(configuration!!.imageConfiguration,
-                        tvShowGenres!!.genres,
-                        movieGenres!!.genres)
-                    showViewPager()
-                }
+                        initDiscoverViewPager(
+                            configuration!!.imageConfiguration,
+                            tvShowGenres!!.genres,
+                            movieGenres!!.genres
+                        )
+                        showViewPager()
+                    }
+            }
         }
     }
 
@@ -74,7 +78,7 @@ class MainPresenter : MvpPresenter<MainView>() {
 
     private fun initView() {}
 
-    private fun loadGenresAndConfig(): Observable< List<Any> > {
+    private fun getGenresAndConfig(): Observable< List<Any> > {
         return Observable
                 .zip(service.getTvShowGenres(NetworkModule.API_KEY, NetworkModule.language) ,
                         service.getMovieGenres(NetworkModule.API_KEY, NetworkModule.language),

@@ -25,8 +25,8 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.navigation_drawer_main.*
 
 
-class MainActivity : MvpAppCompatActivity(), MainView,
-        NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : MvpAppCompatActivity(), MainView {
+       // NavigationView.OnNavigationItemSelectedListener {
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
@@ -48,36 +48,6 @@ class MainActivity : MvpAppCompatActivity(), MainView,
         //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         //supportActionBar!!.setHomeButtonEnabled(true)
 
-    }
-
-
-    override fun initNavigationDrawer() {
-        toggle = ActionBarDrawerToggle(
-            this,
-            navigation_drawer_layout,
-            main_toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        navigation_drawer_layout.addDrawerListener(toggle!!)
-        toggle!!.syncState()
-
-        navigation_view.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId) {
-            R.id.navigation_discover -> {
-
-            }
-            R.id.navigation_favorite -> {
-
-            }
-        }
-
-        navigation_drawer_layout.closeDrawer(GravityCompat.START)
-        return true
     }
 
     override fun initDiscoverViewPager(configuration: ImageConfiguration,
@@ -119,11 +89,41 @@ class MainActivity : MvpAppCompatActivity(), MainView,
         toggle!!.onConfigurationChanged(newConfig)
     }
 
+    //    override fun initNavigationDrawer() {
+//        toggle = ActionBarDrawerToggle(
+//            this,
+//            navigation_drawer_layout,
+//            main_toolbar,
+//            R.string.navigation_drawer_open,
+//            R.string.navigation_drawer_close
+//        )
+//        navigation_drawer_layout.addDrawerListener(toggle!!)
+//        toggle!!.syncState()
+//
+//        navigation_view.setNavigationItemSelectedListener(this)
+//    }
+
+//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//
+//        when(item.itemId) {
+//            R.id.navigation_discover -> {
+//
+//            }
+//            R.id.navigation_favorite -> {
+//
+//            }
+//        }
+//
+//        navigation_drawer_layout.closeDrawer(GravityCompat.START)
+//        return true
+//    }
+
     override fun onBackPressed() {
-        if (navigation_drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            navigation_drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+//        if (navigation_drawer_layout.isDrawerOpen(GravityCompat.START)) {
+//            navigation_drawer_layout.closeDrawer(GravityCompat.START)
+//        } else {
+//            super.onBackPressed()
+//        }
+        super.onBackPressed()
     }
 }

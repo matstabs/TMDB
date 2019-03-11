@@ -9,7 +9,7 @@ import com.tmdb.models.genres.Genre
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface MainView : MvpView {
 
-    fun initNavigationDrawer()
+    //fun initNavigationDrawer()
     fun initDiscoverViewPager(configuration: ImageConfiguration, tvShowGenres: List<Genre>, movieGenres: List<Genre>)
 
     fun showViewPager()
