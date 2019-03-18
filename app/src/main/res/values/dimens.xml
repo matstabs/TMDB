@@ -4,7 +4,7 @@
     <!-- Navigation Drawer -->
     <dimen name="navigation_drawer_header_height">176dp</dimen>
 
-    <!-- List -->
+    <!-- Content List Item -->
     <dimen name="list_item_padding">10dp</dimen>
     <dimen name="list_item_layout_margin">10dp</dimen>
     <dimen name="list_poster_view_width">87dp</dimen>
@@ -18,16 +18,32 @@
     <dimen name="score_text_margin">5dp</dimen>
     <dimen name="genres_text_size">14sp</dimen>
 
+    <!-- Details -->
     <dimen name="left">117dp</dimen>
     <dimen name="secondary_text_size">13sp</dimen>
     <dimen name="details_title_text_size">22sp</dimen>
     <dimen name="description_text_size">12sp</dimen>
-    <dimen name="sub_title_details_text_size">16sp</dimen>
-    <dimen name="facts_item_height">20dp</dimen>
-    <dimen name="facts_item_text_size">14sp</dimen>
-    <dimen name="backdrop_height">274dp</dimen>
+    <dimen name="details_subtitle_text_size">16sp</dimen>
+    <dimen name="details_facts_item_height">20dp</dimen>
+    <dimen name="details_facts_item_text_size">14sp</dimen>
+    <dimen name="backdrop_height">270dp</dimen>
+    <dimen name="details_poster_img_width">87dp</dimen>
+    <dimen name="details_poster_img_heights">130dp</dimen>
 
+    <!-- Trailer List Item -->
     <dimen name="trailer_name_text_size">12sp</dimen>
 
+    <!-- Person Details -->
+    <dimen name="person_details_background_img_height">270dp</dimen>
+    <dimen name="person_details_subtitle_element_padding">20dp</dimen>
+    <dimen name="person_details_subtitle_text_size">16sp</dimen>
+    <dimen name="person_details_biography_text_size">12sp</dimen>
+    <dimen name="person_details_fact_item_text_size">14sp</dimen>
+    <dimen name="person_details_margin_between_subtitle_and_item">10dp</dimen>
+    <dimen name="person_details_margin_between_facts_items">5dp</dimen>
+    <dimen name="person_details_profile_img_width">87dp</dimen>
+    <dimen name="person_details_profile_img_heights">130dp</dimen>
+    <dimen name="person_details_headline_left_margin">117dp</dimen>
+    <dimen name="person_details_headline_height">70dp</dimen>
 
 </resources>

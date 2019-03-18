@@ -34,6 +34,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     @Inject
     lateinit var TMDbAPI: TMDbAPI
 
+    var viewPagerAdapter: ViewPagerAdapter? = null
+
     init {
         TMDbApplication.graph.inject(this)
     }
@@ -55,13 +57,18 @@ class MainActivity : MvpAppCompatActivity(), MainView {
                                        movieGenres: List<Genre>) = with(main_view_pager) {
         main_tab_layout.setupWithViewPager(this)
 
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter.addFragment(DiscoverFragment
-                .getMovieDiscoverFragment(configuration, ArrayList(movieGenres)),
-                resources.getString(R.string.discover_movies_title))
-        viewPagerAdapter.addFragment(DiscoverFragment.
-                getTvShowDiscoverFragment(configuration, ArrayList(tvShowGenres)),
-                resources.getString(R.string.discover_tv_shows_title))
+        if (viewPagerAdapter == null) {
+            Log.d("TAAAG", " 0")
+            viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+            viewPagerAdapter!!.addFragment(
+                DiscoverFragment.getMovieDiscoverFragment(configuration, ArrayList(movieGenres)),
+                resources.getString(R.string.discover_movies_title)
+            )
+            viewPagerAdapter!!.addFragment(
+                DiscoverFragment.getTvShowDiscoverFragment(configuration, ArrayList(tvShowGenres)),
+                resources.getString(R.string.discover_tv_shows_title)
+            )
+        }
 
         adapter = viewPagerAdapter
     }

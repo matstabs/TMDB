@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/person_details_subtitle_element_padding"
+    android:background="@color/grey_background_color"
+    android:id="@+id/person_details_container_facts"
+    tools:showIn="@layout/person_details_activity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/person_details_subtitle_fact"
+        android:text="@string/person_details_facts"
+        android:textSize="@dimen/person_details_subtitle_text_size"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/person_details_margin_between_subtitle_and_item"/>
+
+    <!-- Birth Date -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/person_details_margin_between_facts_items"
+        android:id="@+id/person_details_facts_item_container_birth_date">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:textStyle="bold"
+            android:text="@string/date_of_birth"
+            android:id="@+id/person_details_date_of_birth_fact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:id="@+id/person_details_date_of_birth_text"/>
+
+    </LinearLayout>
+
+    <!-- Date Of Death -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/person_details_margin_between_facts_items"
+        android:id="@+id/person_details_facts_item_container_death_date">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:textStyle="bold"
+            android:text="@string/date_of_death"
+            android:id="@+id/person_details_date_of_death_fact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:id="@+id/person_details_date_of_death_text"/>
+
+    </LinearLayout>
+
+    <!-- Age -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/person_details_margin_between_facts_items"
+        android:id="@+id/person_details_facts_item_container_age">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:textStyle="bold"
+            android:text="@string/age"
+            android:id="@+id/person_details_age_fact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:id="@+id/person_details_age_text"/>
+
+    </LinearLayout>
+
+    <!-- Birth place -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/person_details_margin_between_facts_items"
+        android:id="@+id/person_details_facts_item_container_birth_place">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:textStyle="bold"
+            android:text="@string/birth_place"
+            android:id="@+id/person_details_birth_place_fact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:id="@+id/person_details_birth_place_text"/>
+
+    </LinearLayout>
+
+    <!-- Also known as -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/person_details_facts_item_container_known_as">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:textStyle="bold"
+            android:text="@string/also_known_as"
+            android:id="@+id/person_details_also_known_as_fact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/person_details_fact_item_text_size"
+            android:id="@+id/person_details_also_known_as_text"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -3,10 +3,13 @@ package com.tmdb.network
 import com.tmdb.models.configuration.Configuration
 import com.tmdb.models.details.movie.MovieDetails
 import com.tmdb.models.details.movie.credits.MovieCredits
+import com.tmdb.models.details.person.PersonDetails
+import com.tmdb.models.details.person.images.PersonImages
+import com.tmdb.models.details.person.movie.credits.PersonMovieCredits
+import com.tmdb.models.details.person.tvshow.credits.PersonTvShowCredits
 import com.tmdb.models.videos.Trailers
 import com.tmdb.models.details.tvshow.TvShowDetails
 import com.tmdb.models.details.tvshow.credits.TvShowCredits
-import com.tmdb.models.details.tvshow.videos.TvShowVideos
 import com.tmdb.models.discover.movie.DiscoverMovie
 import com.tmdb.models.discover.tvshow.DiscoverTvShow
 import com.tmdb.models.genres.GenresList
@@ -117,5 +120,24 @@ interface TMDbAPI {
     @GET(value = "genre/movie/list")
     fun getMovieGenres(@Query("api_key") apiKey: String,
                         @Query("language") language: String = "en"): Observable<GenresList>
+
+    @GET(value = "person/{person_id}")
+    fun getPersonDetails(@Path("person_id") personId: Int,
+                       @Query("api_key") apiKey: String,
+                       @Query("language") language: String = "en"): Observable<PersonDetails>
+
+    @GET(value = "person/{person_id}/movie_credits")
+    fun getPersonMovieCredits(@Path("person_id") personId: Int,
+                              @Query("api_key") apiKey: String,
+                              @Query("language") language: String = "en"): Observable<PersonMovieCredits>
+
+    @GET(value = "person/{person_id}/tv_credits")
+    fun getPersonTvShowCredits(@Path("person_id") personId: Int,
+                               @Query("api_key") apiKey: String,
+                               @Query("language") language: String = "en"): Observable<PersonTvShowCredits>
+
+    @GET(value = "person/{person_id}/images")
+    fun getPersonImages(@Path("person_id") personId: Int,
+                        @Query("api_key") apiKey: String): Observable<PersonImages>
 
 }

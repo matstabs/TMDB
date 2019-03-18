@@ -1,4 +1,4 @@
-package com.tmdb.ui.details
+package com.tmdb.ui.details.content
 
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
@@ -20,7 +20,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Function3
 import io.reactivex.schedulers.Schedulers
-import java.net.InetAddress
 import java.util.ArrayList
 import javax.inject.Inject
 

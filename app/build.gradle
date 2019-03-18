@@ -89,4 +89,6 @@ dependencies {
 
     //Circular ImageView
     implementation "com.mikhaellopez:circularimageview:$circular_image_view_version"
+
+    implementation 'com.rany.albeg.wein:appbar-translate-scale-behavior:1.0.0'
 }

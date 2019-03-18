@@ -1,6 +1,7 @@
-package com.tmdb.ui.details
+package com.tmdb.ui.details.content
 
 import com.arellomobile.mvp.MvpView
+import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.tmdb.models.details.movie.MovieDetails
@@ -9,7 +10,7 @@ import com.tmdb.models.details.tvshow.TvShowDetails
 import com.tmdb.models.details.tvshow.credits.TvShowCredits
 import com.tmdb.models.videos.Trailers
 
-@StateStrategyType(value = SingleStateStrategy::class)
+@StateStrategyType(value = AddToEndSingleStrategy::class)
 interface DetailsView : MvpView {
 
     fun getExtra()

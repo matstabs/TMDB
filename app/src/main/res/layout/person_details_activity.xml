@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.details.person.PersonDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/person_details_app_bar"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/person_details_collapsing_layout"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:scrimAnimationDuration="0">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:fitsSystemWindows="true"
+                >
+
+                <!-- Profile Image -->
+                <ImageView
+                    android:id="@+id/person_details_profile_img"
+                    android:layout_width="@dimen/person_details_profile_img_width"
+                    android:layout_height="@dimen/person_details_profile_img_heights"
+                    android:elevation="5dp"
+                    android:src="@drawable/random_face"
+                    android:layout_alignBottom="@+id/person_details_top_ln"
+                    app:layout_collapseMode="parallax"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="17dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/person_details_top_ln">
+
+                    <!-- Backdrop -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/backdrop_height"
+                        android:id="@+id/person_details_title_background_img"
+                        android:src="@drawable/random_backdrop"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax"
+                        />
+
+                    <!-- Headline -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/person_details_headline_height"
+                        android:layout_marginLeft="@dimen/person_details_headline_left_margin">
+
+                        <!-- Name -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="@string/default_title"
+                            android:textSize="@dimen/details_title_text_size"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="@color/white_text_color"
+                            android:id="@+id/person_details_name"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/person_details_toolbar"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Biography -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/person_details_subtitle_element_padding"
+                android:orientation="vertical"
+                android:id="@+id/person_details_container_biography">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/biography"
+                    android:textSize="@dimen/person_details_subtitle_text_size"
+                    android:textStyle="bold"
+                    android:id="@+id/person_details_subtitle_biography"
+                    android:layout_marginBottom="@dimen/person_details_margin_between_subtitle_and_item"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/random_big_text"
+                    android:textSize="@dimen/person_details_biography_text_size"
+                    android:textColor="@color/black_text_color"
+                    android:id="@+id/person_details_biography_text"/>
+
+            </LinearLayout>
+
+            <!-- Facts -->
+            <include layout="@layout/person_details_facts"/>
+
+            <!-- Movies -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/person_details_subtitle_element_padding"
+                android:orientation="vertical"
+                android:id="@+id/person_details_container_movies"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/person_details_movies"
+                    android:textSize="@dimen/person_details_subtitle_text_size"
+                    android:textStyle="bold"
+                    android:id="@+id/person_details_subtitle_movies"
+                    android:layout_marginBottom="@dimen/person_details_margin_between_subtitle_and_item"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/person_details_movies_list"/>
+
+            </LinearLayout>
+
+            <!-- TvShows -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/person_details_subtitle_element_padding"
+                android:orientation="vertical"
+                android:id="@+id/person_details_container_tv_shows"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/person_details_tv_shows"
+                    android:textSize="@dimen/person_details_subtitle_text_size"
+                    android:textStyle="bold"
+                    android:id="@+id/person_details_subtitle_tv_shows"
+                    android:layout_marginBottom="@dimen/person_details_margin_between_subtitle_and_item"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/person_details_tv_shows_list"/>
+
+            </LinearLayout>
+
+            <!-- Images -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/person_details_subtitle_element_padding"
+                android:id="@+id/person_details_container_images"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/person_details_images"
+                    android:textSize="@dimen/person_details_subtitle_text_size"
+                    android:textStyle="bold"
+                    android:id="@+id/person_details_subtitle_images"
+                    android:layout_marginBottom="@dimen/person_details_margin_between_subtitle_and_item"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/person_details_images_list"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <!-- Profile Image -->
+    <!--<com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:id="@+id/person_details_profile_img"
+        android:elevation="4dp"
+        android:padding="10dp"
+        android:src="@drawable/random_face"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="2dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="@color/colorPrimary"
+        app:civ_shadow_radius="5"
+        app:layout_anchor="@id/person_details_app_bar"
+        app:layout_anchorGravity="bottom|end"/>-->
+
+</android.support.design.widget.CoordinatorLayout>

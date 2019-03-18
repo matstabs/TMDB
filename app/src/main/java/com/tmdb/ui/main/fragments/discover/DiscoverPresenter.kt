@@ -71,8 +71,8 @@ class DiscoverPresenter : MvpPresenter< DiscoverView >() {
                         val movies = movie.results
                         curPage = movie.page
                         maxPage = movie.totalPages
-                        viewState.stopRefreshing()
                         viewState.showMovies(ArrayList(movies))
+                        viewState.stopRefreshing()
                         loading = false
                     }
         }

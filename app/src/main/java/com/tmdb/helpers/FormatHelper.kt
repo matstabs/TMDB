@@ -7,6 +7,9 @@ import com.tmdb.models.details.tvshow.Network
 import com.tmdb.models.details.tvshow.ProductionCompany as TvShowProductionCompany
 import com.tmdb.models.details.tvshow.credits.TvShowCredits
 import com.tmdb.models.genres.Genre
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import com.tmdb.models.details.movie.Genre as MovieGenre
 import com.tmdb.models.details.tvshow.Genre as TvShowGenre
 
@@ -139,6 +142,30 @@ class FormatHelper {
         } else {
             ""
         }
+
+        fun alsoKnownAsToString(alsoKnownAs: List<String>): String {
+            var result = ""
+            var first = true
+            for (name in alsoKnownAs)
+                if (first) {
+                    first = false
+                    result += name
+                } else
+                    result += ", ${name}"
+            return result
+        }
+
+        fun changeDateFormat(date: String): String {
+            val oldDate = SimpleDateFormat("yyyy-MM-dd").parse(date)
+            return SimpleDateFormat("yyyy.MM.dd").format(oldDate)
+        }
+
+        fun getAge(birthday: String, year: Int): String {
+            val birthdayYear = SimpleDateFormat("yyyy")
+                    .format(SimpleDateFormat("yyyy-MM-dd").parse(birthday))
+            return (year - birthdayYear.toInt()).toString()
+        }
+
     }
 
 }

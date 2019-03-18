@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,7 @@ import com.tmdb.models.discover.movie.MovieItem
 import com.tmdb.models.discover.tvshow.TvShowItem
 import com.tmdb.models.genres.Genre
 import com.tmdb.ui.adapters.DiscoverListAdapter
-import com.tmdb.ui.details.DetailsActivity
+import com.tmdb.ui.details.content.DetailsActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.discover_fragment.*
 
@@ -30,19 +31,19 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
         private const val GENRES_ARG = "genres"
         private const val OBJECT_TYPE_ARG = "object_type"
 
+        private val tvShowFragment = DiscoverFragment()
+        private val movieFragment = DiscoverFragment()
 
         fun getMovieDiscoverFragment(imageConfiguration: ImageConfiguration,
                                      genres: ArrayList<Genre>): DiscoverFragment {
-            val fragment = DiscoverFragment()
-            fragment.arguments = getArguments(imageConfiguration, genres, ObjectTypes.MOVIE.objectType)
-            return fragment
+            movieFragment.arguments = getArguments(imageConfiguration, genres, ObjectTypes.MOVIE.objectType)
+            return movieFragment
         }
 
         fun getTvShowDiscoverFragment(imageConfiguration: ImageConfiguration,
                                       genres: ArrayList<Genre>): DiscoverFragment {
-            val fragment = DiscoverFragment()
-            fragment.arguments = getArguments(imageConfiguration, genres, ObjectTypes.TV_SHOW.objectType)
-            return fragment
+            tvShowFragment.arguments = getArguments(imageConfiguration, genres, ObjectTypes.TV_SHOW.objectType)
+            return tvShowFragment
         }
 
         private fun getArguments(imageConfiguration: ImageConfiguration,
@@ -64,7 +65,6 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         discover_refresh_layout.setOnRefreshListener(this)
         initRecyclerView()
     }
@@ -108,14 +108,12 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
             movieAdapter?.setItemClickListener { movie ->
                 startActivity(getIntent(movie))
             }
-
             discover_content_list.adapter = movieAdapter
-
         } else {
             movieAdapter!!.data!!.addAll(movies)
             movieAdapter!!.notifyDataSetChanged()
-
         }
+        //Log.d("TAAAG", "${movies.size} ${movies[0].title} ")
     }
 
     override fun showTvShows(tvShows: ArrayList<TvShowItem>) {
@@ -130,11 +128,12 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
             }
 
             discover_content_list.adapter = tvShowAdapter
+            Log.d("TAAAG", "${tvShows.size} ${tvShows[0].name} 1")
 
         } else {
             tvShowAdapter!!.data!!.addAll(tvShows)
             tvShowAdapter!!.notifyDataSetChanged()
-
+            Log.d("TAAAG", "${tvShowAdapter!!.data!!.size} ${tvShowAdapter!!.data!![0].name} 2")
         }
     }
 

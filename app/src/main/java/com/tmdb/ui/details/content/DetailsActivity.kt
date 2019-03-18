@@ -1,4 +1,4 @@
-package com.tmdb.ui.details
+package com.tmdb.ui.details.content
 
 import android.content.Intent
 import android.net.Uri
@@ -15,18 +15,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.tmdb.helpers.FormatHelper
 import com.tmdb.helpers.ImageHelper
+import com.tmdb.helpers.ObjectTypes
 import com.tmdb.models.details.movie.MovieDetails
+import com.tmdb.models.details.movie.credits.Cast as MovieCast
 import com.tmdb.models.details.movie.credits.MovieCredits
 import com.tmdb.models.details.tvshow.TvShowDetails
+import com.tmdb.models.details.tvshow.credits.Cast as TvShowCast
 import com.tmdb.models.details.tvshow.credits.TvShowCredits
 import com.tmdb.models.videos.Trailers
 import com.tmdb.network.NetworkModule
 import com.tmdb.ui.adapters.DetailsCastAdapter
 import com.tmdb.ui.adapters.TrailersAdapter
+import com.tmdb.ui.details.person.PersonDetailsActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.details_facts.*
-import java.net.InetAddress
 
 
 class DetailsActivity : MvpAppCompatActivity(), DetailsView {
@@ -76,7 +79,7 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
         displayTitle(tvShow.name, tvShow.firstAirDate, tvShow.episodeRunTime[0], tvShow.genres)
         displayImages(tvShow.backdropPath, tvShow.posterPath)
         displayDescription(tvShow.overview)
-        displayTvShowFacts(tvShow, credits)
+        displayTvShowFacts(tvShow)
         displayTrailers(trailers)
         displayCast(credits.cast)
         hideProgressbar()
@@ -95,7 +98,7 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
                 runtime, resources.getString(R.string.hrs), resources.getString(R.string.min))
         details_subtitle_genres.text = FormatHelper.genreListToString(genres)
 
-        app_bar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
+        details_app_bar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             var isShow = true
             var scrollRange = -1
 
@@ -103,10 +106,10 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
                 scrollRange = appBarLayout.totalScrollRange
 
                 if (scrollRange + verticalOffset == 0) {
-                    collapsing_layout.title = title
+                    details_collapsing_layout.title = title
                     isShow = true
                 } else if (isShow) {
-                    collapsing_layout.title = " "
+                    details_collapsing_layout.title = " "
                     isShow = false
                 }
             }
@@ -164,7 +167,7 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
                 FormatHelper.getMovieProductionCompaniesString(movie.productionCompanies)
     }
 
-    private fun displayTvShowFacts(tvShow: TvShowDetails, credits: TvShowCredits) {
+    private fun displayTvShowFacts(tvShow: TvShowDetails) {
         original_title_fact.visibility = View.VISIBLE
         original_title_text.visibility = View.VISIBLE
         original_title_text.text = tvShow.originalName
@@ -221,6 +224,7 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
             val adapter = DetailsCastAdapter<T>(cast, presenter.imageHelper!!)
             details_cast_list.layoutManager =
                     LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            adapter.setItemClickListener { person -> startPersonDetailsActivity(person) }
             details_cast_list.adapter = adapter
         } else {
             details_cast_list.visibility = View.GONE
@@ -228,9 +232,24 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
         }
     }
 
+    private fun <T>startPersonDetailsActivity(person: T) {
+        val intent  = Intent(applicationContext, PersonDetailsActivity::class.java)
+        when(presenter.objectType) {
+            ObjectTypes.MOVIE.objectType  -> {
+                intent.putExtra(PersonDetailsActivity.PERSON_ID_EXTRA, (person as MovieCast).id)
+            }
+            ObjectTypes.TV_SHOW.objectType -> {
+                intent.putExtra(PersonDetailsActivity.PERSON_ID_EXTRA, (person as TvShowCast).id)
+            }
+        }
+        intent.putExtra(PersonDetailsActivity.IMAGE_CONFIGURATION_EXTRA, presenter.imageHelper!!.imageConfiguration)
+        startActivity(intent)
+
+    }
+
     private fun showView() {
         details_scrollview.visibility = View.VISIBLE
-        collapsing_layout.visibility = View.VISIBLE
+        details_collapsing_layout.visibility = View.VISIBLE
     }
 
     private fun showProgressbar() {
