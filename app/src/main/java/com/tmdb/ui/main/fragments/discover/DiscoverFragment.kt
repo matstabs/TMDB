@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.tmdb.models.discover.tvshow.TvShowItem
 import com.tmdb.models.genres.Genre
 import com.tmdb.ui.adapters.DiscoverListAdapter
 import com.tmdb.ui.details.content.DetailsActivity
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.discover_fragment.*
 
 class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayout.OnRefreshListener {
@@ -92,7 +90,7 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
 
                 if (!presenter.loading &&
                         firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
-                    presenter.scrolled()
+                    presenter.onScrolled()
                 }
             }
         })
@@ -100,7 +98,6 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
 
     override fun showMovies(movies: ArrayList<MovieItem>) {
         if (movieAdapter == null) {
-            //initRecyclerView()
             movieAdapter = DiscoverListAdapter(movies,
                     ImageHelper(presenter.imageConfiguration),
                     presenter.genres)
@@ -113,12 +110,10 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
             movieAdapter!!.data!!.addAll(movies)
             movieAdapter!!.notifyDataSetChanged()
         }
-        //Log.d("TAAAG", "${movies.size} ${movies[0].title} ")
     }
 
     override fun showTvShows(tvShows: ArrayList<TvShowItem>) {
         if (tvShowAdapter == null) {
-            //initRecyclerView()
             tvShowAdapter = DiscoverListAdapter(tvShows,
                     ImageHelper(presenter.imageConfiguration),
                     presenter.genres)
@@ -128,12 +123,9 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
             }
 
             discover_content_list.adapter = tvShowAdapter
-            Log.d("TAAAG", "${tvShows.size} ${tvShows[0].name} 1")
-
         } else {
             tvShowAdapter!!.data!!.addAll(tvShows)
             tvShowAdapter!!.notifyDataSetChanged()
-            Log.d("TAAAG", "${tvShowAdapter!!.data!!.size} ${tvShowAdapter!!.data!![0].name} 2")
         }
     }
 
@@ -162,7 +154,7 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
             tvShowAdapter!!.data!!.clear()
             tvShowAdapter!!.notifyDataSetChanged()
         }
-        presenter.update()
+        presenter.onRefresh()
     }
 
     override fun stopRefreshing() {
@@ -175,8 +167,6 @@ class DiscoverFragment : MvpAppCompatFragment(), DiscoverView, SwipeRefreshLayou
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.compositeDisposable.dispose()
         presenter.compositeDisposable.clear()
-        presenter.compositeDisposable = CompositeDisposable()
     }
 }

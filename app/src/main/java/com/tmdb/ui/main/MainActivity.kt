@@ -40,7 +40,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         TMDbApplication.graph.inject(this)
     }
 
-    private var toggle: ActionBarDrawerToggle? = null
+    //private var toggle: ActionBarDrawerToggle? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +58,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         main_tab_layout.setupWithViewPager(this)
 
         if (viewPagerAdapter == null) {
-            Log.d("TAAAG", " 0")
             viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
             viewPagerAdapter!!.addFragment(
                 DiscoverFragment.getMovieDiscoverFragment(configuration, ArrayList(movieGenres)),
@@ -81,22 +80,22 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         main_view_pager.visibility = View.GONE
     }
 
-    override fun onStop() {
-        super.onStop()
-        presenter.disposalble?.dispose()
-    }
-
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onPostCreate(savedInstanceState, persistentState)
-        toggle!!.syncState()
+        //toggle!!.syncState()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
-        toggle!!.onConfigurationChanged(newConfig)
+        //toggle!!.onConfigurationChanged(newConfig)
     }
 
-    //    override fun initNavigationDrawer() {
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.compositeDisposable.clear()
+    }
+
+//    override fun initNavigationDrawer() {
 //        toggle = ActionBarDrawerToggle(
 //            this,
 //            navigation_drawer_layout,

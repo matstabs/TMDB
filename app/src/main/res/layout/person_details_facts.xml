@@ -9,6 +9,7 @@
     android:padding="@dimen/person_details_subtitle_element_padding"
     android:background="@color/grey_background_color"
     android:id="@+id/person_details_container_facts"
+    android:visibility="gone"
     tools:showIn="@layout/person_details_activity">
 
     <TextView

@@ -277,9 +277,7 @@ class DetailsActivity : MvpAppCompatActivity(), DetailsView {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.compositeDisposable.dispose()
         presenter.compositeDisposable.clear()
-        presenter.compositeDisposable = CompositeDisposable()
     }
 
 }

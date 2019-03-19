@@ -50,7 +50,6 @@ class DiscoverPresenter : MvpPresenter< DiscoverView >() {
             ObjectTypes.MOVIE.objectType -> displayMovies()
             ObjectTypes.TV_SHOW.objectType -> displayTvShow()
         }
-
     }
 
     private fun displayMovies() {
@@ -96,14 +95,14 @@ class DiscoverPresenter : MvpPresenter< DiscoverView >() {
         }
     }
 
-    fun scrolled() {
+    fun onScrolled() {
         when(objectType) {
             ObjectTypes.MOVIE.objectType -> loadMovies(curPage + 1)
             ObjectTypes.TV_SHOW.objectType -> loadTvShows(curPage + 1)
         }
     }
 
-    fun update() {
+    fun onRefresh() {
         curPage = 0
         maxPage = 1
         loading = false

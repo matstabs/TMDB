@@ -57,7 +57,6 @@ class PersonDetailsActivity : MvpAppCompatActivity(), PersonDetailsView {
         displayImages(person.profilePath, movieCredits, tvShowCredits)
         displayBiography(person.biography)
         displayFacts(person)
-
     }
 
     private fun displayTitle(name: String) {
@@ -112,26 +111,32 @@ class PersonDetailsActivity : MvpAppCompatActivity(), PersonDetailsView {
 
     private fun displayFacts(person: PersonDetails) = with(person) {
 
+        var showFacts = false
+
         //Birthday
-        if (birthday != null && birthday.isNotEmpty())
+        if (birthday != null && birthday.isNotEmpty()) {
+            showFacts = true
             person_details_date_of_birth_text.text = birthday
-        else
+        } else
             person_details_facts_item_container_birth_date.visibility = View.GONE
 
         //Day of Death
-        if (deathday != null && deathday.isNotEmpty())
+        if (deathday != null && deathday.isNotEmpty()) {
+            showFacts = true
             person_details_date_of_death_text.text = deathday
-        else
+        } else
             person_details_facts_item_container_death_date.visibility = View.GONE
 
         //Birth place
-        if (placeOfBirth != null && placeOfBirth.isNotEmpty())
+        if (placeOfBirth != null && placeOfBirth.isNotEmpty()) {
+            showFacts = true
             person_details_birth_place_text.text = placeOfBirth
-        else
+        } else
             person_details_facts_item_container_birth_place.visibility = View.GONE
 
         //Age
         if (birthday != null && birthday.isNotEmpty() && (deathday == null || deathday.isEmpty())) {
+            showFacts = true
             val age = FormatHelper.getAge(birthday, Calendar.getInstance().get(Calendar.YEAR))
             person_details_age_text.text = age
         } else {
@@ -139,17 +144,21 @@ class PersonDetailsActivity : MvpAppCompatActivity(), PersonDetailsView {
         }
 
         //Also known as
-        if (alsoKnownAs.isNotEmpty())
+        if (alsoKnownAs.isNotEmpty()) {
+            showFacts = true
             person_details_also_known_as_text.text = FormatHelper.alsoKnownAsToString(alsoKnownAs)
-        else
+        } else
             person_details_facts_item_container_known_as.visibility = View.GONE
+
+        if (showFacts)
+            person_details_container_facts.visibility = View.VISIBLE
 
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId) {
-            R.id.home -> finish()
+            android.R.id.home -> finish()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -157,8 +166,6 @@ class PersonDetailsActivity : MvpAppCompatActivity(), PersonDetailsView {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.compositeDisposable.dispose()
         presenter.compositeDisposable.clear()
-        presenter.compositeDisposable = CompositeDisposable()
     }
 }
